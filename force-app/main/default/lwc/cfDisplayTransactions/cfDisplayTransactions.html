@@ -1,0 +1,57 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative ">
+            <div style="position: fixed;z-index: 999999;top: 0;right: 0;">
+  <omnistudio-toast class="flexcard-toast-element" theme="slds" title="" message="" styletype=""> </omnistudio-toast>
+</div>
+            <div if:false={cardLoaded} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: white; z-index: 99;">
+  <div>
+   <omnistudio-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></omnistudio-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                      <omnistudio-flex-card-state   data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-action data-style-id="state0element0_child"  tracking-obj={_childCardTrackingObj}   record={record}  card={card}  state-obj={record}  state-action='\{"id":"flex-action-1662957280815","type":"Flyout","displayName":"Download transaction history","vlocityIcon":"action:download","openUrlIn":"Current Window","flyoutType":"OmniScripts","openFlyoutIn":"Modal","osName":"Bank/PrintHistory/English","flyoutLwc":"bank-print-history-english","layoutType":"lightning","hasExtraParams":true,"flyoutParams":{"ContextId":"{Parent.Id}"}}'  re-render-flyout="true"  preload-flyout="true"  theme="slds" ><div slot="flyout"> <omnistudio-custom-lwc-wrapper element-name="c-bank-print-history-english" property='\{"prefill":"{\"ContextId\":\"{Parent.Id}\"}"}' records={records} record-id={recordId} record={record}  card={card} >
+     <c-bank-print-history-english   layout='lightning'    ></c-bank-print-history-english>
+    </omnistudio-custom-lwc-wrapper></div></omnistudio-action>
+    </div><div data-style-id="state0element1" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><omnistudio-data-table data-style-id="state0element1_child"   issearchavailable="true"  issortavailable="true"  cell-level-edit="false"  pagelimit="10"  group-order="desc"  pagesize="10"  columns='\[{"fieldName":"Date","label":"Date","searchable":false,"sortable":true,"type":"text"},{"fieldName":"Type","label":"Type","searchable":"true","sortable":true,"type":"text"},{"fieldName":"Amount","label":"Amount","searchable":false,"sortable":true,"type":"currency"},{"fieldName":"Description","label":"Description","searchable":"true","sortable":true,"type":"text"}]'  records={records}  theme="slds"  ></omnistudio-data-table>
+      </div>
+        </div>
+      </omnistudio-flex-card-state>
+                </template>
+                <template if:false={hasRecords}>
+                      <omnistudio-flex-card-state   data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-action data-style-id="state0element0_child"  tracking-obj={_childCardTrackingObj}   record={record}  card={card}  state-obj={record}  state-action='\{"id":"flex-action-1662957280815","type":"Flyout","displayName":"Download transaction history","vlocityIcon":"action:download","openUrlIn":"Current Window","flyoutType":"OmniScripts","openFlyoutIn":"Modal","osName":"Bank/PrintHistory/English","flyoutLwc":"bank-print-history-english","layoutType":"lightning","hasExtraParams":true,"flyoutParams":{"ContextId":"{Parent.Id}"}}'  re-render-flyout="true"  preload-flyout="true"  theme="slds" ><div slot="flyout"> <omnistudio-custom-lwc-wrapper element-name="c-bank-print-history-english" property='\{"prefill":"{\"ContextId\":\"{Parent.Id}\"}"}' records={records} record-id={recordId} record={record}  card={card} >
+     <c-bank-print-history-english   layout='lightning'    ></c-bank-print-history-english>
+    </omnistudio-custom-lwc-wrapper></div></omnistudio-action>
+    </div><div data-style-id="state0element1" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><omnistudio-data-table data-style-id="state0element1_child"   issearchavailable="true"  issortavailable="true"  cell-level-edit="false"  pagelimit="10"  group-order="desc"  pagesize="10"  columns='\[{"fieldName":"Date","label":"Date","searchable":false,"sortable":true,"type":"text"},{"fieldName":"Type","label":"Type","searchable":"true","sortable":true,"type":"text"},{"fieldName":"Amount","label":"Amount","searchable":false,"sortable":true,"type":"currency"},{"fieldName":"Description","label":"Description","searchable":"true","sortable":true,"type":"text"}]'  records={records}  theme="slds"  ></omnistudio-data-table>
+      </div>
+        </div>
+      </omnistudio-flex-card-state>
+                </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <omnistudio-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+      
+      </omnistudio-action>
+  
+            <omnistudio-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+            
+            </omnistudio-action>
+            </div>
+          </template>

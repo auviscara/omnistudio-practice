@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <formulas>
+        <name>MaskAccountNumber</name>
+        <dataType>String</dataType>
+        <expression>LPAD(RIGHT({!ReplaceDashAcct}, 5), LEN({!ReplaceDashAcct}), &apos;*&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>MaskCardNumber</name>
+        <dataType>String</dataType>
+        <expression>LPAD(RIGHT({!ReplaceDashCardNumber}, 4), LEN({!ReplaceDashCardNumber}), &apos;*&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>ReplaceDashAcct</name>
+        <dataType>String</dataType>
+        <expression>SUBSTITUTE({!$Record.Name},&apos;-&apos;, &apos;&apos;)</expression>
+    </formulas>
+    <formulas>
+        <name>ReplaceDashCardNumber</name>
+        <dataType>String</dataType>
+        <expression>SUBSTITUTE({!$Record.CardNumber__c},&apos;-&apos;, &apos;&apos;)</expression>
+    </formulas>
+    <interviewLabel>Autofill Masked Account Number {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Autofill Masked Account Number</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Masked_Account_Number</name>
+        <label>Update Masked Account Number</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <inputAssignments>
+            <field>AccountNumber</field>
+            <value>
+                <elementReference>ReplaceDashAcct</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CardNumber__c</field>
+            <value>
+                <elementReference>ReplaceDashCardNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactEmail__c</field>
+            <value>
+                <elementReference>$Record.PrimaryContactId__r.Email</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>MaskedAccountNumber__c</field>
+            <value>
+                <elementReference>MaskAccountNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>MaskedCardNumber__c</field>
+            <value>
+                <elementReference>MaskCardNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Nickname__c</field>
+            <value>
+                <elementReference>MaskAccountNumber</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Masked_Account_Number</targetReference>
+        </connector>
+        <object>Account</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>NewAcctNumber</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

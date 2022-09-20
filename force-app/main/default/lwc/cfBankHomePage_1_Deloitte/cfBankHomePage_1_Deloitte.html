@@ -1,0 +1,145 @@
+<template>
+            <div class="slds-grid slds-wrap slds-is-relative ">
+            <div style="position: fixed;z-index: 999999;top: 0;right: 0;">
+  <omnistudio-toast class="flexcard-toast-element" theme="slds" title="" message="" styletype=""> </omnistudio-toast>
+</div>
+            <div if:false={cardLoaded} class="slds-is-absolute vloc-loader_override" style="height: 100%; width: 100%; min-height:50px; background: white; z-index: 99;">
+  <div>
+   <omnistudio-spinner
+      variant="brand"
+      alternative-text="Loading content..."
+      size="medium"
+      theme="slds"
+      ></omnistudio-spinner>
+  </div>
+</div>
+            <template if:false={hasPermission}>
+              You don't have required permissions to view this card.
+            </template>
+            <template if:true={hasPermission}>
+              <template if:true={hasRecords}>
+                        <template for:each={_records} for:item="record" for:index="rindex">
+                            <omnistudio-flex-card-state if:true={record}  key={record._flex.uniqueKey} data-recordid={record.Id} record={record} data-statue="true"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-block data-style-id="state0element0_child"  card={card}  record={record}  label="Block"  collapsible="false"  collapsed-by-default="false"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0" class="slds-col  slds-p-right_small slds-m-bottom_xx-small  slds-size_2-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-base-input-element data-style-id="state0element0block_element0_child"   card={card}  record={record}  type="text"  property-obj='\{"label":"Account Number","fieldBinding":"{AccountNumber}","readOnly":true,"imask":""}'  theme="slds"  ></omnistudio-base-input-element>
+      </div><div data-style-id="state0element0block_element1" class="slds-col  slds-p-right_small slds-m-bottom_xx-small  slds-size_3-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-base-input-element data-style-id="state0element0block_element1_child"   card={card}  record={record}  type="text"  property-obj='\{"label":"Label","fieldBinding":"{Nickname}","readOnly":false,"action":{"name":"","label":"Action","iconName":"standard-default","eventType":"onchange","actionData":{"stateObj":"{record}","card":"{card}","stateAction":{"id":"flex-action-1662482551323","type":"cardAction","displayName":"Action","vlocityIcon":"standard-default","targetType":"Web Page","openUrlIn":"Current Window","Web Page":{"targetName":"/apex"},"eventName":"setValues","fieldValues":[{"fieldName":"Nickname","fieldValue":"{Nickname}"}]}}}}'  action='\{"name":"","label":"Action","iconName":"standard-default","eventType":"onchange","actionData":{"stateObj":"{record}","card":"{card}","stateAction":{"id":"flex-action-1662482551323","type":"cardAction","displayName":"Action","vlocityIcon":"standard-default","targetType":"Web Page","openUrlIn":"Current Window","Web Page":{"targetName":"/apex"},"eventName":"setValues","fieldValues":[{"fieldName":"Nickname","fieldValue":"{Nickname}"}]}}}'  extraclass=" slds-text-link_reset"  theme="slds" onchange={executeAction} data-action-index="index0" ></omnistudio-base-input-element>
+      </div><div data-style-id="state0element0block_element2" class="slds-col  slds-p-right_small slds-m-bottom_xx-small  slds-size_2-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-base-input-element data-style-id="state0element0block_element2_child"   card={card}  record={record}  type="currency"  property-obj='\{"locale":"en-US","currency":"PHP","label":"Balance","fieldBinding":"{Balance}","readOnly":true}'  theme="slds"  ></omnistudio-base-input-element>
+      </div><div data-style-id="state0element0block_element3" class="slds-col   slds-size_1-of-12  " data-rindex={rindex} style="" >
+    <omnistudio-flex-menu data-style-id="state0element0block_element3_child" 
+    onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction}  card={card}  record={record}  type="action"  size="large"  variant=""  icon-name="utility:down"  overflow="true"  label="Select" 
+    theme="slds" > 
+     <omnistudio-flex-menu-item 
+    name="menu-item-1662481740182-0"
+    theme="slds"
+    data-style-id="state0element0block_element3_menuitem_0"
+     data-conditions="undefined" 
+    class=""
+    >
+    <omnistudio-action  card={card}  state-obj={record}  state-action='\{"id":"flex-action-1662482672718","type":"cardAction","displayName":"Refresh Account Details","vlocityIcon":"standard:default","targetType":"Web Page","openUrlIn":"Current Window","Web Page":{"targetName":"/apex"},"eventName":"reload","parent":"menu","isMenuItem":true}'  data-conditions="undefined"  theme="slds" extra-class="slds-dropdown__item" 
+      action-wrapperclass=""
+      action-labelclass="slds-truncate menu-item-label"
+      menu-item-data="%7B%7D"
+      icon-size="x-small"
+      icon-extraclass="slds-icon-text-default slds-m-right_x-small"
+       onselectcards={updateSelectedCards} onsetvalue={updateAction} >
+     </omnistudio-action>
+    </omnistudio-flex-menu-item>
+    </omnistudio-flex-menu>
+    </div><div data-style-id="state0element0block_element4" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-block data-style-id="state0element0block_element4_child"  card={card}  record={record}  label=""  collapsible="true"  collapsed-by-default="false"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element4block_element0" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-block data-style-id="state0element0block_element4block_element0_child"  card={card}  record={record}  label="Transaction History"  collapsible="true"  collapsed-by-default="true"  action='\null'  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element4block_element0block_element0" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><c-cf-display-transactions data-style-id="state0element0block_element4block_element0block_element0_child"  tracking-obj={_childCardTrackingObj}  is-inside-parent={insideParent} parent-uniquekey={uniqueKey}  card-node=""  parent-record={record}  records={_records}  parent-mergefields={card}  record-id={recordId}  is-child-card-tracking-enabled="false"  parent-attribute='\{"Id":"{Id}"}'  object-api-name={objectApiName}  theme="slds"   onupdateparent={updateParentData}></c-cf-display-transactions>
+    </div>
+        </div></omnistudio-block>
+    </div><div data-style-id="state0element0block_element4block_element1" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-block data-style-id="state0element0block_element4block_element1_child"  card={card}  record={record}  label="Transfer Funds"  collapsible="true"  collapsed-by-default="true"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element4block_element1block_element0" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-action data-style-id="state0element0block_element4block_element1block_element0_child"  tracking-obj={_childCardTrackingObj}   record={record}  card={card}  state-obj={record}  state-action='\{"id":"flex-action-1662514444790","type":"Flyout","displayName":"From {Nickname}","vlocityIcon":"standard-default","openUrlIn":"Current Window","flyoutType":"OmniScripts","openFlyoutIn":"Modal","layoutType":"lightning","osName":"Bank/Transactions/English","flyoutLwc":"bank-transactions-english","hasExtraParams":true,"flyoutParams":{"ContextId":"{Id}"}}'  theme="slds" ><div slot="flyout"> <omnistudio-custom-lwc-wrapper element-name="c-bank-transactions-english" property='\{"prefill":"{\"ContextId\":\"{Id}\"}"}' records={records} record-id={recordId} record={record}  card={card} >
+     <c-bank-transactions-english   layout='lightning'    ></c-bank-transactions-english>
+    </omnistudio-custom-lwc-wrapper></div></omnistudio-action>
+    </div>
+        </div></omnistudio-block>
+    </div>
+        </div></omnistudio-block>
+    </div>
+        </div></omnistudio-block>
+    </div>
+        </div>
+      </omnistudio-flex-card-state>
+                        </template>
+                      </template>
+                      <template if:false={hasRecords}>
+                            <omnistudio-flex-card-state  record={record} data-statue="false"  data-index="0" data-rindex={rindex} class="cf-vlocity-state-0 cf-vlocity-state slds-size_12-of-12"  tracking-obj={_childCardTrackingObj} >
+      <div if:true={cardLoaded} class="slds-grid slds-wrap slds-card slds-p-around_x-small slds-m-bottom_x-small" style="">
+          <div data-style-id="state0element0" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-block data-style-id="state0element0_child"  card={card}  record={record}  label="Block"  collapsible="false"  collapsed-by-default="false"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element0" class="slds-col  slds-p-right_small slds-m-bottom_xx-small  slds-size_2-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-base-input-element data-style-id="state0element0block_element0_child"   card={card}  record={record}  type="text"  property-obj='\{"label":"Account Number","fieldBinding":"{AccountNumber}","readOnly":true,"imask":""}'  theme="slds"  ></omnistudio-base-input-element>
+      </div><div data-style-id="state0element0block_element1" class="slds-col  slds-p-right_small slds-m-bottom_xx-small  slds-size_3-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-base-input-element data-style-id="state0element0block_element1_child"   card={card}  record={record}  type="text"  property-obj='\{"label":"Label","fieldBinding":"{Nickname}","readOnly":false,"action":{"name":"","label":"Action","iconName":"standard-default","eventType":"onchange","actionData":{"stateObj":"{record}","card":"{card}","stateAction":{"id":"flex-action-1662482551323","type":"cardAction","displayName":"Action","vlocityIcon":"standard-default","targetType":"Web Page","openUrlIn":"Current Window","Web Page":{"targetName":"/apex"},"eventName":"setValues","fieldValues":[{"fieldName":"Nickname","fieldValue":"{Nickname}"}]}}}}'  action='\{"name":"","label":"Action","iconName":"standard-default","eventType":"onchange","actionData":{"stateObj":"{record}","card":"{card}","stateAction":{"id":"flex-action-1662482551323","type":"cardAction","displayName":"Action","vlocityIcon":"standard-default","targetType":"Web Page","openUrlIn":"Current Window","Web Page":{"targetName":"/apex"},"eventName":"setValues","fieldValues":[{"fieldName":"Nickname","fieldValue":"{Nickname}"}]}}}'  extraclass=" slds-text-link_reset"  theme="slds" onchange={executeAction} data-action-index="index1" ></omnistudio-base-input-element>
+      </div><div data-style-id="state0element0block_element2" class="slds-col  slds-p-right_small slds-m-bottom_xx-small  slds-size_2-of-12  " data-rindex={rindex} style="      
+         " ><omnistudio-base-input-element data-style-id="state0element0block_element2_child"   card={card}  record={record}  type="currency"  property-obj='\{"locale":"en-US","currency":"PHP","label":"Balance","fieldBinding":"{Balance}","readOnly":true}'  theme="slds"  ></omnistudio-base-input-element>
+      </div><div data-style-id="state0element0block_element3" class="slds-col   slds-size_1-of-12  " data-rindex={rindex} style="" >
+    <omnistudio-flex-menu data-style-id="state0element0block_element3_child" 
+    onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction}  card={card}  record={record}  type="action"  size="large"  variant=""  icon-name="utility:down"  overflow="true"  label="Select" 
+    theme="slds" > 
+     <omnistudio-flex-menu-item 
+    name="menu-item-1662481740182-0"
+    theme="slds"
+    data-style-id="state0element0block_element3_menuitem_0"
+     data-conditions="undefined" 
+    class=""
+    >
+    <omnistudio-action  card={card}  state-obj={record}  state-action='\{"id":"flex-action-1662482672718","type":"cardAction","displayName":"Refresh Account Details","vlocityIcon":"standard:default","targetType":"Web Page","openUrlIn":"Current Window","Web Page":{"targetName":"/apex"},"eventName":"reload","parent":"menu","isMenuItem":true}'  data-conditions="undefined"  theme="slds" extra-class="slds-dropdown__item" 
+      action-wrapperclass=""
+      action-labelclass="slds-truncate menu-item-label"
+      menu-item-data="%7B%7D"
+      icon-size="x-small"
+      icon-extraclass="slds-icon-text-default slds-m-right_x-small"
+       onselectcards={updateSelectedCards} onsetvalue={updateAction} >
+     </omnistudio-action>
+    </omnistudio-flex-menu-item>
+    </omnistudio-flex-menu>
+    </div><div data-style-id="state0element0block_element4" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-block data-style-id="state0element0block_element4_child"  card={card}  record={record}  label=""  collapsible="true"  collapsed-by-default="false"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element4block_element0" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-block data-style-id="state0element0block_element4block_element0_child"  card={card}  record={record}  label="Transaction History"  collapsible="true"  collapsed-by-default="true"  action='\null'  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element4block_element0block_element0" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" ><c-cf-display-transactions data-style-id="state0element0block_element4block_element0block_element0_child"  tracking-obj={_childCardTrackingObj}  is-inside-parent={insideParent} parent-uniquekey={uniqueKey}  card-node=""  parent-record={record}  records={_records}  parent-mergefields={card}  record-id={recordId}  is-child-card-tracking-enabled="false"  parent-attribute='\{"Id":"{Id}"}'  object-api-name={objectApiName}  theme="slds"   onupdateparent={updateParentData}></c-cf-display-transactions>
+    </div>
+        </div></omnistudio-block>
+    </div><div data-style-id="state0element0block_element4block_element1" class="slds-col   slds-p-around_x-small slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-block data-style-id="state0element0block_element4block_element1_child"  card={card}  record={record}  label="Transfer Funds"  collapsible="true"  collapsed-by-default="true"  theme="slds"  ><div class="slds-grid slds-wrap">
+          <div data-style-id="state0element0block_element4block_element1block_element0" class="slds-col   slds-size_12-of-12 " data-rindex={rindex} style="" >
+    <omnistudio-action data-style-id="state0element0block_element4block_element1block_element0_child"  tracking-obj={_childCardTrackingObj}   record={record}  card={card}  state-obj={record}  state-action='\{"id":"flex-action-1662514444790","type":"Flyout","displayName":"From {Nickname}","vlocityIcon":"standard-default","openUrlIn":"Current Window","flyoutType":"OmniScripts","openFlyoutIn":"Modal","layoutType":"lightning","osName":"Bank/Transactions/English","flyoutLwc":"bank-transactions-english","hasExtraParams":true,"flyoutParams":{"ContextId":"{Id}"}}'  theme="slds" ><div slot="flyout"> <omnistudio-custom-lwc-wrapper element-name="c-bank-transactions-english" property='\{"prefill":"{\"ContextId\":\"{Id}\"}"}' records={records} record-id={recordId} record={record}  card={card} >
+     <c-bank-transactions-english   layout='lightning'    ></c-bank-transactions-english>
+    </omnistudio-custom-lwc-wrapper></div></omnistudio-action>
+    </div>
+        </div></omnistudio-block>
+    </div>
+        </div></omnistudio-block>
+    </div>
+        </div></omnistudio-block>
+    </div>
+        </div>
+      </omnistudio-flex-card-state>
+                      </template>
+            </template>
+            <template if:true={hasError}>
+            {error}
+            </template>
+            
+      <omnistudio-action action-wrapperclass="slds-hide" re-render-flyout class="action-trigger slds-col" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+      
+      </omnistudio-action>
+  
+            <omnistudio-action class="execute-action" re-render-flyout action-wrapperclass="slds-hide" onupdateos={updateOmniscript} onselectcards={updateSelectedCards} onsetvalue={updateAction} onfireactionevent={actionEvtHandler}>
+            
+            </omnistudio-action>
+            </div>
+          </template>

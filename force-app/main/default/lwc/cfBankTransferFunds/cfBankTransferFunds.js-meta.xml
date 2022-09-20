@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>51.0</apiVersion>
+  <runtimeNamespace>omnistudio</runtimeNamespace>
+  <isExposed>true</isExposed>
+  <masterLabel>bankTransferFunds</masterLabel>
+  
+  
+<targets xmlns=""><target>lightning__AppPage</target><target>lightning__RecordPage</target><target>lightningCommunity__Default</target></targets><targetConfigs xmlns=""><targetConfig targets="lightning__AppPage"><property name="debug" type="Boolean"/><property name="recordId" type="String"/></targetConfig><targetConfig targets="lightning__RecordPage"><property name="debug" type="Boolean"/></targetConfig><targetConfig targets="lightningCommunity__Default"><property name="cfAccountId" type="String" label="Account Id"/><property name="cfEmailAddress" type="String" label="Email Address"/></targetConfig></targetConfigs></LightningComponentBundle>

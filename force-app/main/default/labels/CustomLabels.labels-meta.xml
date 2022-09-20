@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>AccountId</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>AccountId</shortDescription>
+        <value>{&quot;AccountId&quot;:&quot;0015i00000PH1viAAD&quot;}</value>
+    </labels>
+</CustomLabels>
