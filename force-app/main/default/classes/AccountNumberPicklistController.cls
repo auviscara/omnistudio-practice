@@ -1,4 +1,4 @@
-global class AccountNumberPicklistController implements omnistudio.VlocityOpenInterface {
+global class AccountNumberPicklistController implements vlocity_cmt.VlocityOpenInterface {
     public Boolean invokeMethod(String methodName, Map < String, Object > input, Map < String, Object > outMap, Map < String, Object > options) {
         if (methodName.equals('PopulateAccountPicklist')) {
             PopulateAccountPicklist(input, outMap, options);

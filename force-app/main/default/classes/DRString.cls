@@ -1,4 +1,4 @@
-global class DRString implements omnistudio.VlocityOpenInterface 
+global class DRString implements vlocity_cmt.VlocityOpenInterface 
 {
 global Boolean invokeMethod(String methodName, Map<String, Object> inputs, Map<String, Object> output, Map<String, Object> options)
     {
